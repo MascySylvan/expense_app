@@ -15,9 +15,13 @@ class ExpenseItem extends StatelessWidget {
           vertical: 16,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 5,
           children: [
-            Text(expense.title),
+            Text(
+              expense.title,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
             Row(
               children: [
                 Text('\$${expense.amount.toStringAsFixed(2)}'),
