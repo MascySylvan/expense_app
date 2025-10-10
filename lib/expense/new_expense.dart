@@ -29,14 +29,23 @@ class _NewExpenseState extends State<NewExpense> {
       showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
-          title: Text('Invalid Data'),
-          content: Text('Please fill out all fields with valid data.'),
+          title: Text(
+            'Invalid Data',
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          content: Text(
+            'Please fill out all fields with valid data.',
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.pop(ctx);
               },
-              child: Text('OK'),
+              child: Text(
+                'OK',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
             ),
           ],
         ),
@@ -57,11 +66,15 @@ class _NewExpenseState extends State<NewExpense> {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: Text('Expense successfully saved'),
+        title: Text(
+          'Expense successfully saved',
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
         content: Text(
           'Expense was saved with the following data.'
           '\nTitle: ${newExpense.title}'
           '\nAmount: \$${newExpense.amount}',
+          style: Theme.of(context).textTheme.titleMedium,
         ),
         actions: [
           TextButton(
@@ -69,7 +82,10 @@ class _NewExpenseState extends State<NewExpense> {
               Navigator.pop(ctx);
               Navigator.pop(context);
             },
-            child: Text('OK'),
+            child: Text(
+              'OK',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
           ),
         ],
       ),
@@ -112,6 +128,7 @@ class _NewExpenseState extends State<NewExpense> {
       child: Column(
         children: [
           TextField(
+            style: Theme.of(context).textTheme.titleMedium,
             controller: titleController,
             maxLength: 50,
             keyboardType: TextInputType.text,
@@ -124,6 +141,7 @@ class _NewExpenseState extends State<NewExpense> {
             children: [
               Expanded(
                 child: TextField(
+                  style: Theme.of(context).textTheme.titleMedium,
                   controller: amountController,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
@@ -140,6 +158,7 @@ class _NewExpenseState extends State<NewExpense> {
                       dateSelected == null
                           ? 'No Date Selected'
                           : formatter.format(dateSelected!),
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                     IconButton(
                       onPressed: openDatePicker,
@@ -184,7 +203,10 @@ class _NewExpenseState extends State<NewExpense> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text('Cancel'),
+                child: Text(
+                  'Cancel',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
               ),
               ElevatedButton(
                 onPressed: submitExpenseData,

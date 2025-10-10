@@ -1,3 +1,4 @@
+import 'package:expense_app/chart/chart.dart';
 import 'package:expense_app/expense/expense_list.dart';
 import 'package:expense_app/expense/new_expense.dart';
 import 'package:expense_app/model/expense.dart';
@@ -74,8 +75,13 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     Widget mainContent = Center(
-      child: Text('No expenses found. Try adding one!'),
+      child: Text(
+        'No expenses found. Try adding one!',
+        style: Theme.of(context).textTheme.titleMedium,
+      ),
     );
 
     if (registeredExpenses.isNotEmpty) {
@@ -95,14 +101,33 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Text('Chart Area'),
-          Expanded(
-            child: mainContent,
-          ),
-        ],
-      ),
+      // body: Column(
+      //   children: [
+      //     Chart(expenses: registeredExpenses),
+      //     Expanded(
+      //       child: mainContent,
+      //     ),
+      //   ],
+      // ),
+      body: screenWidth < 600
+          ? Column(
+              children: [
+                Chart(expenses: registeredExpenses),
+                Expanded(
+                  child: mainContent,
+                ),
+              ],
+            )
+          : Row(
+              children: [
+                Expanded(   
+                  child: Chart(expenses: registeredExpenses),
+                ),
+                Expanded(
+                  child: mainContent,
+                ),
+              ],
+            ),
     );
   }
 }

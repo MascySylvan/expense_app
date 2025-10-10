@@ -20,17 +20,25 @@ class ExpenseItem extends StatelessWidget {
           children: [
             Text(
               expense.title,
-              style: Theme.of(context).textTheme.titleLarge,
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                fontSize: 16,
+              ),
             ),
             Row(
               children: [
-                Text('\$${expense.amount.toStringAsFixed(2)}'),
+                Text(
+                  '\$${expense.amount.toStringAsFixed(2)}',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
                 Spacer(),
                 Row(
                   spacing: 5,
                   children: [
                     Icon(categoryIcons[expense.category]),
-                    Text(expense.formattedDate),
+                    Text(
+                      expense.formattedDate,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
                   ],
                 ),
               ],
